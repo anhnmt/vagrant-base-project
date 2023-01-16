@@ -12,6 +12,21 @@ sudo apt-get update
 sudo apt-get install -y kubelet=1.24.0-00 kubeadm=1.24.0-00 kubectl=1.24.0-00
 sudo apt-mark hold kubelet kubeadm kubectl
 
+kubectl version --client && kubeadm version
+
+# disable swap
+sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
+sudo nano /etc/fstab
+
+sudo swapoff -a
+sudo mount -a
+free -h
+
+sudo modprobe overlay
+sudo modprobe br_netfilter
+
+sudo sysctl --system
+
 kubectl get nodes
 
 sudo systemctl enable kubelet --now
