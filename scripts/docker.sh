@@ -41,3 +41,5 @@ sudo tee /etc/modules-load.d/containerd.conf <<EOF
 overlay
 br_netfilter
 EOF
+
+sudo sysctl --system
